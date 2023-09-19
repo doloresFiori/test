@@ -1,0 +1,463 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Хост: 127.0.0.1:3306
+-- Время создания: Сен 20 2023 г., 01:09
+-- Версия сервера: 8.0.30
+-- Версия PHP: 7.2.34
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- База данных: `testdb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `NL_HOUSES`
+--
+
+CREATE TABLE `NL_HOUSES` (
+  `ID_NL_HOUSES` int NOT NULL,
+  `NL_HOUSES_SHORT` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `NL_HOUSES`
+--
+
+INSERT INTO `NL_HOUSES` (`ID_NL_HOUSES`, `NL_HOUSES_SHORT`) VALUES
+(1, 'Панельный дом'),
+(2, 'Коттедж');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `NL_LOG`
+--
+
+CREATE TABLE `NL_LOG` (
+  `ID_NL_LOG` int NOT NULL,
+  `NL_LOG_DATE` date NOT NULL,
+  `NL_LOG_TIME` time NOT NULL,
+  `NL_LOG_IP` varchar(255) NOT NULL,
+  `NL_LOG_IUD` varchar(255) NOT NULL,
+  `NL_LOG_TABLE_NAME` varchar(255) NOT NULL,
+  `ID_NL_USER` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `NL_LOG`
+--
+
+INSERT INTO `NL_LOG` (`ID_NL_LOG`, `NL_LOG_DATE`, `NL_LOG_TIME`, `NL_LOG_IP`, `NL_LOG_IUD`, `NL_LOG_TABLE_NAME`, `ID_NL_USER`) VALUES
+(1, '2023-09-19', '01:22:45', '127.0.0.1', 'add', 'NL_USER', 1),
+(2, '2023-09-19', '21:26:35', '127.0.0.1', 'add', 'NL_PROP_RESALE', 1),
+(3, '2023-09-19', '21:27:50', '127.0.0.1', 'add', 'NL_PROP_RESALE', 1),
+(4, '2023-09-19', '21:28:25', '127.0.0.1', 'edit', 'NL_PROP_RESALE', 1),
+(5, '2023-09-19', '21:32:59', '127.0.0.1', 'edit', 'NL_PROP_RESALE', 1),
+(6, '2023-09-19', '23:45:05', '127.0.0.1', 'add', 'NL_VIEW', 1),
+(7, '2023-09-19', '23:47:24', '127.0.0.1', 'add', 'NL_MATERIAL', 1),
+(8, '2023-09-19', '23:47:42', '127.0.0.1', 'add', 'NL_MATERIAL', 1),
+(9, '2023-09-19', '23:49:45', '127.0.0.1', 'add', 'NL_HOUSES', 1),
+(10, '2023-09-19', '23:49:53', '127.0.0.1', 'add', 'NL_HOUSES', 1),
+(11, '2023-09-19', '23:49:57', '127.0.0.1', 'add', 'NL_HOUSES', 1),
+(12, '2023-09-20', '00:01:53', '127.0.0.1', 'add', 'NL_HOUSES', 1),
+(13, '2023-09-20', '00:10:48', '127.0.0.1', 'add', 'NL_HOUSES', 1),
+(14, '2023-09-20', '00:11:05', '127.0.0.1', 'add', 'NL_HOUSES', 1),
+(15, '2023-09-20', '00:11:11', '127.0.0.1', 'add', 'NL_HOUSES', 1),
+(16, '2023-09-20', '00:11:16', '127.0.0.1', 'add', 'NL_HOUSES', 1),
+(17, '2023-09-20', '00:14:46', '127.0.0.1', 'add', 'NL_MATERIAL', 1),
+(18, '2023-09-20', '00:15:02', '127.0.0.1', 'add', 'NL_MATERIAL', 1),
+(19, '2023-09-20', '00:27:12', '127.0.0.1', 'add', 'NL_MATERIAL', 1),
+(20, '2023-09-20', '00:45:28', '127.0.0.1', 'edit', 'NL_HOUSES', 1),
+(21, '2023-09-20', '00:45:40', '127.0.0.1', 'edit', 'NL_HOUSES', 1),
+(22, '2023-09-20', '00:46:21', '127.0.0.1', 'add', 'NL_HOUSES', 1),
+(23, '2023-09-20', '00:46:44', '127.0.0.1', 'del', 'NL_HOUSES', 1),
+(24, '2023-09-20', '00:47:21', '127.0.0.1', 'add', 'NL_MATERIAL', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `NL_LOG_DETAIL`
+--
+
+CREATE TABLE `NL_LOG_DETAIL` (
+  `ID_NL_LOG_DETAIL` int NOT NULL,
+  `ID_NL_LOG` int NOT NULL,
+  `NL_LOG_DETAIL_OLD` varchar(2550) NOT NULL,
+  `NL_LOG_DETAIL_NEW` varchar(2550) NOT NULL,
+  `NL_LOG_DETAIL_FIELD` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `NL_LOG_DETAIL`
+--
+
+INSERT INTO `NL_LOG_DETAIL` (`ID_NL_LOG_DETAIL`, `ID_NL_LOG`, `NL_LOG_DETAIL_OLD`, `NL_LOG_DETAIL_NEW`, `NL_LOG_DETAIL_FIELD`) VALUES
+(1, 1, '', '3', 'ID_NL_USER'),
+(2, 1, '', '1', 'ID_NL_USER_PERMISSION'),
+(3, 1, '', 'lolita', 'NL_USER_LOGIN'),
+(4, 1, '', 'Пользователь', 'NL_USER_SHORT'),
+(5, 1, '', 'Пользователь', 'NL_USER_FULL'),
+(6, 1, '', '+71234567891', 'NL_USER_PHONE'),
+(7, 2, '', '9', 'ID_NL_PROP_RESALE'),
+(8, 2, '', '60', 'NL_PROP_RESALE_AREA_FULL'),
+(9, 2, '', 'Краснодарский край, Краснодар, жилой массив имени Демьяна Бедного, Степная ул., 1/1к3 р-н Прикубанский', 'NL_PROP_RESALE_ADDRESS'),
+(10, 2, '', '2', 'NL_PROP_RESALE_FLOOR'),
+(11, 2, '', '7000000', 'NL_PROP_RESALE_COST_TOTAL'),
+(12, 2, '', '', 'NL_PROP_RESALE_PHONE_OWNER'),
+(13, 2, '', '', 'ID_NL_VIEW'),
+(14, 2, '', '', 'ID_NL_HOUSES'),
+(15, 2, '', '1', 'ID_NL_MATERIAL'),
+(16, 2, '', '1', 'ID_NL_USER'),
+(17, 2, '', '+79282601474', 'NL_PROP_RESALE_PHONE'),
+(18, 2, '', '[\"/img/prop_resale/PHOTO_URLS_9_230919_092443.PNG\",\"/img/prop_resale/PHOTO_URLS_9_230919_092445.PNG\"]', 'NL_PROP_RESALE_PHOTO_URLS'),
+(19, 3, '', '9', 'ID_NL_PROP_RESALE'),
+(20, 3, '', '60', 'NL_PROP_RESALE_AREA_FULL'),
+(21, 3, '', 'Краснодарский край, Краснодар, жилой массив имени Демьяна Бедного, Степная ул., 1/1к3 р-н Прикубанский', 'NL_PROP_RESALE_ADDRESS'),
+(22, 3, '', '2', 'NL_PROP_RESALE_FLOOR'),
+(23, 3, '', '7000000', 'NL_PROP_RESALE_COST_TOTAL'),
+(24, 3, '', '', 'NL_PROP_RESALE_PHONE_OWNER'),
+(25, 3, '', '', 'ID_NL_VIEW'),
+(26, 3, '', '', 'ID_NL_HOUSES'),
+(27, 3, '', '1', 'ID_NL_MATERIAL'),
+(28, 3, '', '1', 'ID_NL_USER'),
+(29, 3, '', '+79282601474', 'NL_PROP_RESALE_PHONE'),
+(30, 3, '', '[\"/img/prop_resale/PHOTO_URLS_9_230919_092733.PNG\",\"/img/prop_resale/PHOTO_URLS_9_230919_092735.PNG\"]', 'NL_PROP_RESALE_PHOTO_URLS'),
+(31, 3, '', '%7B%22ops%22%3A%5B%7B%22attributes%22%3A%7B%22color%22%3A%22%23000000%22%2C%22underline%22%3Atrue%7D%2C%22insert%22%3A%22%D0%A1%D0%B2%D0%B5%D1%82%D0%BB%D0%B0%D1%8F%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0%20%D1%81%20%D0%B2%D1%8B%D1%81%D0%BE%D0%BA%D0%B8%D0%BC%D0%B8%20%D0%BF%D0%BE%D1%82%D0%BE%D0%BB%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B8%20%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%BC%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82%D0%BE%D0%BC.%22%7D%2C%7B%22insert%22%3A%22%5Cn%22%7D%5D%7D', 'NL_PROP_RESALE_DESCRIPTION'),
+(32, 4, '9', '9', 'ID_NL_PROP_RESALE'),
+(33, 4, '60.00', '60', 'NL_PROP_RESALE_AREA_FULL'),
+(34, 4, 'Краснодарский край, Краснодар, жилой массив имени Демьяна Бедного, Степная ул., 1/1к3 р-н Прикубанский', 'Краснодарский край, Краснодар, жилой массив имени Демьяна Бедного, Степная ул., 1/1к3 р-н Прикубанский', 'NL_PROP_RESALE_ADDRESS'),
+(35, 4, '2', '2', 'NL_PROP_RESALE_FLOOR'),
+(36, 4, '7000000', '7000000', 'NL_PROP_RESALE_COST_TOTAL'),
+(37, 4, '', '', 'NL_PROP_RESALE_PHONE_OWNER'),
+(38, 4, '', '', 'ID_NL_VIEW'),
+(39, 4, '', '', 'ID_NL_HOUSES'),
+(40, 4, '1', '1', 'ID_NL_MATERIAL'),
+(41, 4, '1', '1', 'ID_NL_USER'),
+(42, 4, '+79282601474', '+79282601474', 'NL_PROP_RESALE_PHONE'),
+(43, 4, '[\"/img/prop_resale/PHOTO_URLS_9_230919_092733.PNG\",\"/img/prop_resale/PHOTO_URLS_9_230919_092735.PNG\"]', '[\"/img/prop_resale/PHOTO_URLS_9_230919_092733.PNG\",\"/img/prop_resale/PHOTO_URLS_9_230919_092735.PNG\"]', 'NL_PROP_RESALE_PHOTO_URLS'),
+(44, 4, '%7B%22ops%22%3A%5B%7B%22attributes%22%3A%7B%22color%22%3A%22%23000000%22%2C%22underline%22%3Atrue%7D%2C%22insert%22%3A%22%D0%A1%D0%B2%D0%B5%D1%82%D0%BB%D0%B0%D1%8F%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0%20%D1%81%20%D0%B2%D1%8B%D1%81%D0%BE%D0%BA%D0%B8%D0%BC%D0%B8%20%D0%BF%D0%BE%D1%82%D0%BE%D0%BB%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B8%20%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%BC%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82%D0%BE%D0%BC.%22%7D%2C%7B%22insert%22%3A%22%5Cn%22%7D%5D%7D', '%7B%22ops%22%3A%5B%7B%22attributes%22%3A%7B%22color%22%3A%22%23000000%22%2C%22underline%22%3Atrue%7D%2C%22insert%22%3A%22%D0%A1%D0%B2%D0%B5%D1%82%D0%BB%D0%B0%D1%8F%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0%20%D1%81%20%D0%B2%D1%8B%D1%81%D0%BE%D0%BA%D0%B8%D0%BC%D0%B8%20%D0%BF%D0%BE%D1%82%D0%BE%D0%BB%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B8%20%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%BC%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82%D0%BE%D0%BC.%22%7D%2C%7B%22insert%22%3A%22%5Cn%22%7D%2C%7B%22attributes%22%3A%7B%22color%22%3A%22%23000000%22%2C%22italic%22%3Atrue%7D%2C%22insert%22%3A%22%D0%98%D0%BC%D0%B5%D1%8E%D1%82%D1%81%D1%8F%20%D0%B4%D0%B2%D0%B5%20%D0%B8%D0%B7%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5%20%D0%BA%D0%BE%D0%BC%D0%BD%D0%B0%D1%82%D1%8B%2C%20%D1%87%D1%82%D0%BE%20%D0%BE%D0%B1%D0%B5%D1%81%D0%BF%D0%B5%D1%87%D0%B8%D0%B2%D0%B0%D0%B5%D1%82%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C%20%D0%B8%20%D1%83%D0%B4%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%BE%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D1%80%D0%BE%D0%B6%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.%22%7D%2C%7B%22attributes%22%3A%7B%22indent%22%3A1%7D%2C%22insert%22%3A%22%5Cn%22%7D%5D%7D', 'NL_PROP_RESALE_DESCRIPTION'),
+(45, 5, '9', '9', 'ID_NL_PROP_RESALE'),
+(46, 5, '60.00', '60', 'NL_PROP_RESALE_AREA_FULL'),
+(47, 5, 'Краснодарский край, Краснодар, жилой массив имени Демьяна Бедного, Степная ул., 1/1к3 р-н Прикубанский', 'Краснодарский край, Краснодар, жилой массив имени Демьяна Бедного, Степная ул., 1/1к3 р-н Прикубанский', 'NL_PROP_RESALE_ADDRESS'),
+(48, 5, '2', '2', 'NL_PROP_RESALE_FLOOR'),
+(49, 5, '7000000', '7000000', 'NL_PROP_RESALE_COST_TOTAL'),
+(50, 5, '', '', 'NL_PROP_RESALE_PHONE_OWNER'),
+(51, 5, '', '', 'ID_NL_VIEW'),
+(52, 5, '', '', 'ID_NL_HOUSES'),
+(53, 5, '1', '1', 'ID_NL_MATERIAL'),
+(54, 5, '1', '1', 'ID_NL_USER'),
+(55, 5, '+79282601474', '+79282601474', 'NL_PROP_RESALE_PHONE'),
+(56, 5, '[\"/img/prop_resale/PHOTO_URLS_9_230919_092733.PNG\",\"/img/prop_resale/PHOTO_URLS_9_230919_092735.PNG\"]', '[\"/img/prop_resale/PHOTO_URLS_9_230919_092733.PNG\",\"/img/prop_resale/PHOTO_URLS_9_230919_092735.PNG\"]', 'NL_PROP_RESALE_PHOTO_URLS'),
+(57, 5, '%7B%22ops%22%3A%5B%7B%22attributes%22%3A%7B%22color%22%3A%22%23000000%22%2C%22underline%22%3Atrue%7D%2C%22insert%22%3A%22%D0%A1%D0%B2%D0%B5%D1%82%D0%BB%D0%B0%D1%8F%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0%20%D1%81%20%D0%B2%D1%8B%D1%81%D0%BE%D0%BA%D0%B8%D0%BC%D0%B8%20%D0%BF%D0%BE%D1%82%D0%BE%D0%BB%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B8%20%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%BC%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82%D0%BE%D0%BC.%22%7D%2C%7B%22insert%22%3A%22%5Cn%22%7D%2C%7B%22attributes%22%3A%7B%22color%22%3A%22%23000000%22%2C%22italic%22%3Atrue%7D%2C%22insert%22%3A%22%D0%98%D0%BC%D0%B5%D1%8E%D1%82%D1%81%D1%8F%20%D0%B4%D0%B2%D0%B5%20%D0%B8%D0%B7%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5%20%D0%BA%D0%BE%D0%BC%D0%BD%D0%B0%D1%82%D1%8B%2C%20%D1%87%D1%82%D0%BE%20%D0%BE%D0%B1%D0%B5%D1%81%D0%BF%D0%B5%D1%87%D0%B8%D0%B2%D0%B0%D0%B5%D1%82%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C%20%D0%B8%20%D1%83%D0%B4%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%BE%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D1%80%D0%BE%D0%B6%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.%22%7D%2C%7B%22attributes%22%3A%7B%22indent%22%3A1%7D%2C%22insert%22%3A%22%5Cn%22%7D%5D%7D', '%7B%22ops%22%3A%5B%7B%22attributes%22%3A%7B%22color%22%3A%22%23000000%22%2C%22underline%22%3Atrue%7D%2C%22insert%22%3A%22%D0%A1%D0%B2%D0%B5%D1%82%D0%BB%D0%B0%D1%8F%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0%20%D1%81%20%D0%B2%D1%8B%D1%81%D0%BE%D0%BA%D0%B8%D0%BC%D0%B8%20%D0%BF%D0%BE%D1%82%D0%BE%D0%BB%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B8%20%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%BC%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82%D0%BE%D0%BC.%22%7D%2C%7B%22insert%22%3A%22%5Cn%22%7D%2C%7B%22attributes%22%3A%7B%22color%22%3A%22%23000000%22%2C%22italic%22%3Atrue%7D%2C%22insert%22%3A%22%D0%98%D0%BC%D0%B5%D1%8E%D1%82%D1%81%D1%8F%20%D0%B4%D0%B2%D0%B5%20%D0%B8%D0%B7%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5%20%D0%BA%D0%BE%D0%BC%D0%BD%D0%B0%D1%82%D1%8B%2C%20%D1%87%D1%82%D0%BE%20%D0%BE%D0%B1%D0%B5%D1%81%D0%BF%D0%B5%D1%87%D0%B8%D0%B2%D0%B0%D0%B5%D1%82%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C%20%D0%B8%20%D1%83%D0%B4%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%BE%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D1%80%D0%BE%D0%B6%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.%22%7D%2C%7B%22insert%22%3A%22%5Cn%22%7D%5D%7D', 'NL_PROP_RESALE_DESCRIPTION'),
+(58, 6, '', '3', 'ID_NL_VIEW'),
+(59, 6, '', 'Во двор', 'NL_VIEW_SHORT'),
+(60, 7, '', '1', 'ID_NL_MATERIAL'),
+(61, 7, '', 'Пеноблок', 'NL_MATERIAL_SHORT'),
+(62, 8, '', '1', 'ID_NL_MATERIAL'),
+(63, 8, '', 'Пеноблок', 'NL_MATERIAL_SHORT'),
+(64, 9, '', '1', 'ID_NL_HOUSES'),
+(65, 9, '', 'Пеноблок', 'NL_HOUSES_SHORT'),
+(66, 10, '', '1', 'ID_NL_HOUSES'),
+(67, 10, '', 'Пеноблок', 'NL_HOUSES_SHORT'),
+(68, 11, '', '1', 'ID_NL_HOUSES'),
+(69, 11, '', 'Пеноблок', 'NL_HOUSES_SHORT'),
+(70, 12, '', '1', 'ID_NL_HOUSES'),
+(71, 12, '', 'Пеноблок', 'NL_HOUSES_SHORT'),
+(72, 13, '', '1', 'ID_NL_HOUSES'),
+(73, 13, '', 'Пеноблок', 'NL_HOUSES_SHORT'),
+(74, 14, '', '1', 'ID_NL_HOUSES'),
+(75, 14, '', 'Пеноблок', 'NL_HOUSES_SHORT'),
+(76, 15, '', '1', 'ID_NL_HOUSES'),
+(77, 15, '', 'Пеноблок', 'NL_HOUSES_SHORT'),
+(78, 16, '', '1', 'ID_NL_HOUSES'),
+(79, 16, '', 'Пеноблок', 'NL_HOUSES_SHORT'),
+(80, 17, '', '1', 'ID_NL_MATERIAL'),
+(81, 17, '', 'Пеноблок', 'NL_MATERIAL_SHORT'),
+(82, 18, '', '1', 'ID_NL_MATERIAL'),
+(83, 18, '', 'Пен', 'NL_MATERIAL_SHORT'),
+(84, 19, '', '1', 'ID_NL_MATERIAL'),
+(85, 19, '', 'Пеноблок', 'NL_MATERIAL_SHORT'),
+(86, 20, '2', '2', 'ID_NL_HOUSES'),
+(87, 20, 'Коттедж', 'Коттедж дом', 'NL_HOUSES_SHORT'),
+(88, 21, '2', '2', 'ID_NL_HOUSES'),
+(89, 21, 'Коттедж дом', 'Коттедж', 'NL_HOUSES_SHORT'),
+(90, 22, '', '3', 'ID_NL_HOUSES'),
+(91, 22, '', 'Бунгало', 'NL_HOUSES_SHORT'),
+(92, 23, '3', '', 'ID_NL_HOUSES'),
+(93, 23, 'Бунгало', '', 'NL_HOUSES_SHORT'),
+(94, 24, '', '4', 'ID_NL_MATERIAL'),
+(95, 24, '', 'Газобетон', 'NL_MATERIAL_SHORT');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `NL_MATERIAL`
+--
+
+CREATE TABLE `NL_MATERIAL` (
+  `ID_NL_MATERIAL` int NOT NULL,
+  `NL_MATERIAL_SHORT` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `NL_MATERIAL`
+--
+
+INSERT INTO `NL_MATERIAL` (`ID_NL_MATERIAL`, `NL_MATERIAL_SHORT`) VALUES
+(1, 'Кирпич'),
+(2, 'Дерево'),
+(3, 'Пеноблок'),
+(4, 'Газобетон');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `NL_PROP_RESALE`
+--
+
+CREATE TABLE `NL_PROP_RESALE` (
+  `ID_NL_PROP_RESALE` int NOT NULL,
+  `ID_NL_VIEW` int DEFAULT NULL,
+  `ID_NL_HOUSES` int DEFAULT NULL,
+  `ID_NL_MATERIAL` int DEFAULT NULL,
+  `NL_PROP_RESALE_FLOOR` varchar(25) DEFAULT NULL,
+  `NL_PROP_RESALE_AREA_FULL` decimal(6,2) NOT NULL,
+  `NL_PROP_RESALE_PHOTO_URLS` varchar(5100) DEFAULT NULL,
+  `NL_PROP_RESALE_COST_TOTAL` int DEFAULT NULL,
+  `NL_PROP_RESALE_ADDRESS` varchar(2550) DEFAULT NULL,
+  `NL_PROP_RESALE_DESCRIPTION` varchar(5100) DEFAULT NULL,
+  `ID_NL_USER` int DEFAULT NULL,
+  `NL_PROP_RESALE_PHONE` varchar(50) DEFAULT NULL,
+  `NL_PROP_RESALE_PHONE_OWNER` varchar(255) DEFAULT NULL,
+  `NL_PROP_RESALE_DATE_INSERT` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `NL_PROP_RESALE_DATE_UPDATE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `NL_PROP_RESALE`
+--
+
+INSERT INTO `NL_PROP_RESALE` (`ID_NL_PROP_RESALE`, `ID_NL_VIEW`, `ID_NL_HOUSES`, `ID_NL_MATERIAL`, `NL_PROP_RESALE_FLOOR`, `NL_PROP_RESALE_AREA_FULL`, `NL_PROP_RESALE_PHOTO_URLS`, `NL_PROP_RESALE_COST_TOTAL`, `NL_PROP_RESALE_ADDRESS`, `NL_PROP_RESALE_DESCRIPTION`, `ID_NL_USER`, `NL_PROP_RESALE_PHONE`, `NL_PROP_RESALE_PHONE_OWNER`, `NL_PROP_RESALE_DATE_INSERT`, `NL_PROP_RESALE_DATE_UPDATE`) VALUES
+(3, NULL, NULL, NULL, '1', '555.00', '[\"/img/prop_resale/PHOTO_URLS_3_191201_024304.jpg\"]', 1000000, 'Россия, Краснодарский край, Анапа, Советская улица ', '%7B%22ops%22%3A%5B%7B%22insert%22%3A%22%D0%A5%D0%BE%D1%80%D0%BE%D1%88%D0%B0%D1%8F%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0%5Cn%22%7D%5D%7D', 1, '+79282601474', NULL, '2019-12-01 11:44:02', '2023-09-19 20:08:38'),
+(9, NULL, NULL, 1, '2', '60.00', '[\"/img/prop_resale/PHOTO_URLS_9_230919_092733.PNG\",\"/img/prop_resale/PHOTO_URLS_9_230919_092735.PNG\"]', 7000000, 'Краснодарский край, Краснодар, жилой массив имени Демьяна Бедного, Степная ул., 1/1к3 р-н Прикубанский', '%7B%22ops%22%3A%5B%7B%22attributes%22%3A%7B%22color%22%3A%22%23000000%22%2C%22underline%22%3Atrue%7D%2C%22insert%22%3A%22%D0%A1%D0%B2%D0%B5%D1%82%D0%BB%D0%B0%D1%8F%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0%20%D1%81%20%D0%B2%D1%8B%D1%81%D0%BE%D0%BA%D0%B8%D0%BC%D0%B8%20%D0%BF%D0%BE%D1%82%D0%BE%D0%BB%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%B8%20%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%BC%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82%D0%BE%D0%BC.%22%7D%2C%7B%22insert%22%3A%22%5Cn%22%7D%2C%7B%22attributes%22%3A%7B%22color%22%3A%22%23000000%22%2C%22italic%22%3Atrue%7D%2C%22insert%22%3A%22%D0%98%D0%BC%D0%B5%D1%8E%D1%82%D1%81%D1%8F%20%D0%B4%D0%B2%D0%B5%20%D0%B8%D0%B7%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5%20%D0%BA%D0%BE%D0%BC%D0%BD%D0%B0%D1%82%D1%8B%2C%20%D1%87%D1%82%D0%BE%20%D0%BE%D0%B1%D0%B5%D1%81%D0%BF%D0%B5%D1%87%D0%B8%D0%B2%D0%B0%D0%B5%D1%82%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C%20%D0%B8%20%D1%83%D0%B4%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%BE%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D1%80%D0%BE%D0%B6%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.%22%7D%2C%7B%22insert%22%3A%22%5Cn%22%7D%5D%7D', 1, '+79282601474', NULL, '2023-09-19 18:27:50', '2023-09-19 18:32:59');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `NL_USER`
+--
+
+CREATE TABLE `NL_USER` (
+  `ID_NL_USER` int NOT NULL,
+  `ID_NL_USER_PERMISSION` int NOT NULL,
+  `NL_USER_LOGIN` varchar(50) NOT NULL,
+  `NL_USER_PASSWORD` blob NOT NULL,
+  `NL_USER_SHORT` varchar(25) NOT NULL,
+  `NL_USER_FULL` varchar(2550) NOT NULL,
+  `NL_USER_PHONE` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `NL_USER`
+--
+
+INSERT INTO `NL_USER` (`ID_NL_USER`, `ID_NL_USER_PERMISSION`, `NL_USER_LOGIN`, `NL_USER_PASSWORD`, `NL_USER_SHORT`, `NL_USER_FULL`, `NL_USER_PHONE`) VALUES
+(1, 2, 'admin', 0xaeb0c38af6fce07e40349cec2c17388f, 'Администратор', 'Администратор', '+79282601474'),
+(3, 1, 'lolita', 0xdfe56ef9f1fc83e8aa8f11dc147b11dd, 'Пользователь', 'Пользователь', '+71234567891');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `NL_USER_PERMISSION`
+--
+
+CREATE TABLE `NL_USER_PERMISSION` (
+  `ID_NL_USER_PERMISSION` int NOT NULL,
+  `NL_USER_PERMISSION_SHORT` varchar(25) NOT NULL,
+  `NL_USER_PERMISSION_FULL` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `NL_USER_PERMISSION`
+--
+
+INSERT INTO `NL_USER_PERMISSION` (`ID_NL_USER_PERMISSION`, `NL_USER_PERMISSION_SHORT`, `NL_USER_PERMISSION_FULL`) VALUES
+(1, 'Пользователь', 'Пользователь'),
+(2, 'Администратор', 'Администратор'),
+(3, 'Гость', 'Гость');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `NL_VIEW`
+--
+
+CREATE TABLE `NL_VIEW` (
+  `ID_NL_VIEW` int NOT NULL,
+  `NL_VIEW_SHORT` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `NL_VIEW`
+--
+
+INSERT INTO `NL_VIEW` (`ID_NL_VIEW`, `NL_VIEW_SHORT`) VALUES
+(1, 'На море'),
+(2, 'В город'),
+(3, 'Во двор');
+
+--
+-- Индексы сохранённых таблиц
+--
+
+--
+-- Индексы таблицы `NL_HOUSES`
+--
+ALTER TABLE `NL_HOUSES`
+  ADD PRIMARY KEY (`ID_NL_HOUSES`);
+
+--
+-- Индексы таблицы `NL_LOG`
+--
+ALTER TABLE `NL_LOG`
+  ADD PRIMARY KEY (`ID_NL_LOG`) USING BTREE,
+  ADD KEY `ID_NL_USER` (`ID_NL_USER`) USING BTREE;
+
+--
+-- Индексы таблицы `NL_LOG_DETAIL`
+--
+ALTER TABLE `NL_LOG_DETAIL`
+  ADD PRIMARY KEY (`ID_NL_LOG_DETAIL`) USING BTREE,
+  ADD KEY `ID_NL_LOG` (`ID_NL_LOG`) USING BTREE;
+
+--
+-- Индексы таблицы `NL_MATERIAL`
+--
+ALTER TABLE `NL_MATERIAL`
+  ADD PRIMARY KEY (`ID_NL_MATERIAL`);
+
+--
+-- Индексы таблицы `NL_PROP_RESALE`
+--
+ALTER TABLE `NL_PROP_RESALE`
+  ADD PRIMARY KEY (`ID_NL_PROP_RESALE`) USING BTREE,
+  ADD KEY `ID_NL_VIEW` (`ID_NL_VIEW`) USING BTREE,
+  ADD KEY `ID_NL_HOUSES` (`ID_NL_HOUSES`),
+  ADD KEY `ID_NL_MATERIAL` (`ID_NL_MATERIAL`);
+
+--
+-- Индексы таблицы `NL_USER`
+--
+ALTER TABLE `NL_USER`
+  ADD PRIMARY KEY (`ID_NL_USER`) USING BTREE,
+  ADD KEY `ID_NL_USER_PERMISSION` (`ID_NL_USER_PERMISSION`) USING BTREE;
+
+--
+-- Индексы таблицы `NL_USER_PERMISSION`
+--
+ALTER TABLE `NL_USER_PERMISSION`
+  ADD PRIMARY KEY (`ID_NL_USER_PERMISSION`) USING BTREE;
+
+--
+-- Индексы таблицы `NL_VIEW`
+--
+ALTER TABLE `NL_VIEW`
+  ADD PRIMARY KEY (`ID_NL_VIEW`) USING BTREE;
+
+--
+-- AUTO_INCREMENT для сохранённых таблиц
+--
+
+--
+-- AUTO_INCREMENT для таблицы `NL_HOUSES`
+--
+ALTER TABLE `NL_HOUSES`
+  MODIFY `ID_NL_HOUSES` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `NL_LOG`
+--
+ALTER TABLE `NL_LOG`
+  MODIFY `ID_NL_LOG` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT для таблицы `NL_LOG_DETAIL`
+--
+ALTER TABLE `NL_LOG_DETAIL`
+  MODIFY `ID_NL_LOG_DETAIL` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+
+--
+-- AUTO_INCREMENT для таблицы `NL_MATERIAL`
+--
+ALTER TABLE `NL_MATERIAL`
+  MODIFY `ID_NL_MATERIAL` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT для таблицы `NL_PROP_RESALE`
+--
+ALTER TABLE `NL_PROP_RESALE`
+  MODIFY `ID_NL_PROP_RESALE` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT для таблицы `NL_USER`
+--
+ALTER TABLE `NL_USER`
+  MODIFY `ID_NL_USER` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT для таблицы `NL_USER_PERMISSION`
+--
+ALTER TABLE `NL_USER_PERMISSION`
+  MODIFY `ID_NL_USER_PERMISSION` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `NL_VIEW`
+--
+ALTER TABLE `NL_VIEW`
+  MODIFY `ID_NL_VIEW` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `NL_LOG`
+--
+ALTER TABLE `NL_LOG`
+  ADD CONSTRAINT `NL_LOG_IBFK_1` FOREIGN KEY (`ID_NL_USER`) REFERENCES `NL_USER` (`ID_NL_USER`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `NL_LOG_DETAIL`
+--
+ALTER TABLE `NL_LOG_DETAIL`
+  ADD CONSTRAINT `NL_LOG_DETAIL_IBFK_1` FOREIGN KEY (`ID_NL_LOG`) REFERENCES `NL_LOG` (`ID_NL_LOG`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `NL_PROP_RESALE`
+--
+ALTER TABLE `NL_PROP_RESALE`
+  ADD CONSTRAINT `nl_prop_resale_ibfk_1` FOREIGN KEY (`ID_NL_VIEW`) REFERENCES `NL_VIEW` (`ID_NL_VIEW`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Ограничения внешнего ключа таблицы `NL_USER`
+--
+ALTER TABLE `NL_USER`
+  ADD CONSTRAINT `NL_USER_IBFK_1` FOREIGN KEY (`ID_NL_USER_PERMISSION`) REFERENCES `NL_USER_PERMISSION` (`ID_NL_USER_PERMISSION`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
